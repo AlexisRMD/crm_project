@@ -1,0 +1,22 @@
+<div id="<%= dom_id product %>">
+  <p>
+    <strong>Nom:</strong>
+    <%= product.name %>
+  </p>
+
+  <p>
+    <strong>Catégorie:</strong>
+    <%= Category.find(product.category_id).name %>
+  </p>
+
+  <p>
+    <strong>Prix:</strong>
+    <%= product.price %>€
+  </p>
+
+  <p>
+    <strong>En stock:</strong>
+    <%= product.remaining_quantity %>
+  </p>
+
+</div>

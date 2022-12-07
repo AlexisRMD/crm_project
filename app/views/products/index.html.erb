@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Produits</h1>
+
+<div id="products">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Produit</th>
+        <th scope="col">Catégorie</th>
+        <th scope="col">Prix</th>
+        <th scope="col">En stock</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <%= link_to(product) do %>
+        <tr>
+          <th scope="row"><%= product.id %></th>
+          <td><%= product.name %></td>
+          <td><%= Category.find(product.category_id).name %></td>
+          <td><%= product.price %>€</td>
+          <td><%= product.remaining_quantity %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<%= link_to "Nouveau produit", new_product_path, class:'btn btn-primary' %>
