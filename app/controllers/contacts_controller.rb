@@ -3,6 +3,16 @@ class ContactsController < InheritedResources::Base
 
   def index
     @contacts = Contact.all
+
+    @types_name_keys = Contact.type_names.keys
+    @types_name_values = Contact.type_names.values
+
+    @i = 0;
+
+    #@type_name_values = Array.new
+    #@contacts.each do |element|
+      #@type_name_values.append(element.type_name.value)
+    #end
   end
 
   def show
@@ -59,7 +69,7 @@ class ContactsController < InheritedResources::Base
   end
 
   def contact_params
-    params.require(:contact).permit(:name, :tel, :email, :type_name, :etat)
+    params.require(:contact).permit(:name, :tel, :email, :type_name, :status)
   end
 
 end

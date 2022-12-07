@@ -16,12 +16,22 @@
 
   <p>
     <strong>Type:</strong>
-    <%= contact.type_name %>
+    <% if contact.type_name == "prospect" %>
+      <%= "Prospect" %>
+    <% else %>
+      <%= "Client" %>
+    <% end %>
   </p>
 
   <p>
-    <strong>Etat:</strong>
-    <%= contact.etat %>
+    <strong>Status:</strong>
+    <% if contact.status == "nothing" %>
+      <%= "Rien" %>
+    <% elsif contact.status == "to_contact" %>
+      <%= "A contacté" %>
+    <% else %>
+      <%= "Transaction(s) en cours" %>
+    <% end %>
   </p>
 
 </div>

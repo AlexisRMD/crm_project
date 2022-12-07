@@ -28,12 +28,22 @@
 
   <div>
     <%= form.label :type_name, style: "display: block" %>
-    <%= form.select :type_name, Contact.type_names.keys.to_a %>
+    <% if contact.type_name == "prospect" %>
+      <%= form.select :type_name, options_for_select(Contact.type_names.values.to_a, "Prospect") %>
+    <% else %>
+      <%= form.select :type_name, options_for_select(Contact.type_names.values.to_a, "Client") %>
+    <% end %>
   </div>
 
   <div>
-    <%= form.label :etat, style: "display: block" %>
-    <%= form.select :etat, Contact.etats.keys.to_a %>
+    <%= form.label :status, style: "display: block" %>
+    <% if contact.status == "nothing" %>
+      <%= form.select :status, options_for_select(Contact.statuses.values.to_a, "Rien") %>
+    <% elsif contact.status == "to_contact" %>
+      <%= form.select :status, options_for_select(Contact.statuses.values.to_a, "A contacté") %>
+    <% else %>
+      <%= form.select :status, options_for_select(Contact.statuses.values.to_a, "Transaction(s) en cours") %>
+    <% end %>
   </div>
 
   <div>

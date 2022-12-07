@@ -1,4 +1,4 @@
 class Contact < ApplicationRecord
-    enum type_name: [ :prospect, :client]
-    enum etat: [ :nothing, :to_contact, :negotiation, :wait_command, :completed]
+    enum type_name: { prospect: 'Prospect', client: 'Client' }
+    enum status: { nothing: 'Rien', to_contact: 'A contacté', have_transactions: 'Transaction(s) en cours' }
 end
