@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   #get 'home/index'
   resources :products
   resources :categories
+  resources :contacts
 
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
