@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_07_094121) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  
+
   create_table "contacts", force: :cascade do |t|
     t.string "name"
     t.string "tel"
