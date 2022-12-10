@@ -11,27 +11,38 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, "Nom", style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="row mb-3 justify-content-center">
+    <%= form.label :name, "Nom", class: "col-auto col-form-label" %>
+    <div class="col">
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :category_id, "Catégorie", style: "display: block" %>
-    <%= form.select :category_id, options_for_select(Category.all.map{|c|[c.name, c.id]}) %>
+ <div class="row mb-3 justify-content-center">
+    <%= form.label :category_id, "Catégorie", class: "col-auto col-form-label" %>
+    <div class="col">
+      <%= form.select :category_id, options_for_select(Category.all.map{|c|[c.name, c.id]}), {}, class: "form-select" %>
+    </div>
+    <%= link_to(categories_path, class: "btn btn-primary col-auto") do %>
+    <i class="bi bi-plus-slash-minus"></i>
+    <% end %>
   </div>
 
-  <div>
-    <%= form.label :price, "Prix", style: "display: block" %>
-    <%= form.text_field :price %>
+ <div class="row mb-3 justify-content-center">
+    <%= form.label :price, "Prix", class: "col-auto col-form-label" %>
+    <div class="col">
+      <%= form.text_field :price, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :remaining_quantity, "Stock", style: "display: block" %>
-    <%= form.number_field :remaining_quantity %>
+ <div class="row mb-3 justify-content-center">
+    <%= form.label :remaining_quantity, "Stock", class: "col-auto col-form-label" %>
+    <div class="col">
+      <%= form.number_field :remaining_quantity, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.submit "Créer ce produit", class:'btn btn-primary mt-2' %>
+ <div class="row mb-3">
+    <%= form.submit "Confirmer", class:'btn btn-primary' %>
   </div>
 <% end %>
