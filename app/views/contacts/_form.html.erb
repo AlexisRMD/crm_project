@@ -11,42 +11,52 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="row mb-3 justify-content-center">
+    <%= form.label :name, "Nom", class: "col-auto col-form-label" %>
+    <div class="col">
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :tel, style: "display: block" %>
-    <%= form.text_field :tel %>
+  <div class="row mb-3 justify-content-center">
+    <%= form.label :tel, "Numéro de téléphone", class: "col-auto col-form-label" %>
+    <div class="col">
+      <%= form.text_field :tel, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+  <div class="row mb-3 justify-content-center">
+    <%= form.label :email, "Email", class: "col-auto col-form-label" %>
+    <div class="col">
+      <%= form.text_field :email, class: "form-control" %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :type_name, style: "display: block" %>
-    <% if contact.type_name == "prospect" %>
-      <%= form.select :type_name, options_for_select(Contact.type_names.values.to_a, "Prospect") %>
-    <% else %>
-      <%= form.select :type_name, options_for_select(Contact.type_names.values.to_a, "Client") %>
-    <% end %>
+  <div class="row mb-3 justify-content-center">
+    <%= form.label :type_name, "Type", class: "col-auto col-form-label" %>
+    <div class="col">
+      <% if contact.type_name == "prospect" %>
+        <%= form.select :type_name, options_for_select(Contact.type_names.values.to_a, "Prospect"), {}, class: "form-select" %>
+      <% else %>
+        <%= form.select :type_name, options_for_select(Contact.type_names.values.to_a, "Client"), {}, class: "form-select" %>
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <% if contact.status == "nothing" %>
-      <%= form.select :status, options_for_select(Contact.statuses.values.to_a, "Rien") %>
-    <% elsif contact.status == "to_contact" %>
-      <%= form.select :status, options_for_select(Contact.statuses.values.to_a, "A contacté") %>
-    <% else %>
-      <%= form.select :status, options_for_select(Contact.statuses.values.to_a, "Transaction(s) en cours") %>
-    <% end %>
+  <div class="row mb-3 justify-content-center">
+    <%= form.label :status, "Status", class: "col-auto col-form-label" %>
+    <div class="col">
+      <% if contact.status == "nothing" %>
+        <%= form.select :status, options_for_select(Contact.statuses.values.to_a, "Rien"), {}, class: "form-select" %>
+      <% elsif contact.status == "to_contact" %>
+        <%= form.select :status, options_for_select(Contact.statuses.values.to_a, "A contacté"), {}, class: "form-select" %>
+      <% else %>
+        <%= form.select :status, options_for_select(Contact.statuses.values.to_a, "Transaction(s) en cours"), {}, class: "form-select" %>
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="row mb-3">
+    <%= form.submit "Confirmer", class:'btn btn-primary' %>
   </div>
 <% end %>

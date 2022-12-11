@@ -3,12 +3,56 @@
 <h1>Contacts</h1>
 
 <div id="contacts">
-  <% @contacts.each do |contact| %>
-    <%= render contact %>
-    <p>
-      <%= link_to "Show this contact", contact %>
-    </p>
-  <% end %>
+  <table class="table align-middle">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Numéro de téléphone</th>
+      <th scope="col">Email</th>
+      <th scope="col">Type</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contacts.each do |contact| %>
+        <tr>
+          <th scope="row"><%= contact.id %></th>
+          <td><%= contact.name %></td>
+          <td><%= contact.tel %></td>
+          <td><%= contact.email %></td>
+          <td>
+            <% if contact.type_name == "prospect" %>
+              <%= "Prospect" %>
+            <% else %>
+              <%= "Client" %>
+            <% end %>
+          </td>
+          <td>
+            <% if contact.status == "nothing" %>
+              <%= "Rien" %>
+            <% elsif contact.status == "to_contact" %>
+              <%= "A contacté" %>
+            <% else %>
+              <%= "Transaction(s) en cours" %>
+            <% end %>
+          </td>
+          <td>
+          <div class="d-flex justify-content-center">
+            <%= link_to(edit_contact_path(contact), class: "btn btn-warning text-light me-2") do %>
+              <i class="bi bi-pencil-square"></i>
+            <% end %>
+            <%= button_to(contact, method: :delete, class: "btn btn-danger") do %>
+              <i class="bi bi-trash"></i>
+            <% end %>
+          </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "New contact", new_contact_path %>
+<%= link_to "Nouveau contact", new_contact_path, class: "btn btn-primary" %>
+

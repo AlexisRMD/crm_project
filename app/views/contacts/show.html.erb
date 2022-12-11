@@ -3,8 +3,8 @@
 <%= render @contact %>
 
 <div>
-  <%= link_to "Edit this contact", edit_contact_path(@contact) %> |
-  <%= link_to "Back to contacts", contacts_path %>
+  <%= link_to "Éditer ce contact", edit_contact_path(@contact), class:'btn btn-warning' %> |
+  <%= link_to "Retour aux contacts", contacts_path, class:'btn btn-primary' %>
 
-  <%= button_to "Destroy this contact", @contact, method: :delete %>
+  <%= button_to "Supprimer ce contact", @contact, method: :delete, class:'btn btn-danger' %>
 </div>
