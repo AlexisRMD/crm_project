@@ -35,6 +35,10 @@
                     <i class='bx bx-folder nav_icon'></i>
                     <span class="nav_name">Produits</span>
                   <% end %>
+                  <%= link_to(transactions_path, class:"nav_link #{'active' if request.path == transactions_path}") do %>
+                    <i class='bx bx-folder nav_icon'></i>
+                    <span class="nav_name">Transactions</span>
+                  <% end %>
                 </div>
               </div>
               <a href="#" class="nav_link">

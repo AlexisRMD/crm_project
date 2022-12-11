@@ -1,0 +1,28 @@
+<div id="<%= dom_id transaction %>">
+  <p>
+    <strong>Contact:</strong>
+    <%= @contact_names[transaction.id] %>
+  </p>
+
+  <p>
+    <strong>Product:</strong>
+    <%= @product_names[transaction.id] %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <% if transaction.status == "negociation" %>
+      <%= "Négociation en cours" %>
+    <% elsif transaction.status == "wait_command" %>
+      <%= "Commande en cours" %>
+    <% else %>
+      <%= "Terminé" %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>Date livraison:</strong>
+    <%= transaction.date_livraison.strftime("A livré le %d/%m/%Y à %I:%M%p") %>
+  </p>
+
+</div>

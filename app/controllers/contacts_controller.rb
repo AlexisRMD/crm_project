@@ -3,16 +3,6 @@ class ContactsController < InheritedResources::Base
 
   def index
     @contacts = Contact.all
-
-    @types_name_keys = Contact.type_names.keys
-    @types_name_values = Contact.type_names.values
-
-    @i = 0;
-
-    #@type_name_values = Array.new
-    #@contacts.each do |element|
-      #@type_name_values.append(element.type_name.value)
-    #end
   end
 
   def show
@@ -26,7 +16,7 @@ class ContactsController < InheritedResources::Base
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        format.html { redirect_to contact_url(@contact), notice: "Contact was successfully updated." }
+        format.html { redirect_to contact_url(@contact), notice: "Le Contact a bien été mise à jour." }
         format.json { render :show, status: :ok, location: @contact }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -44,7 +34,7 @@ class ContactsController < InheritedResources::Base
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to contact_url(@contact), notice: "Contact was successfully created." }
+        format.html { redirect_to contact_url(@contact), notice: "Le Contact a bien été crée." }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -57,7 +47,7 @@ class ContactsController < InheritedResources::Base
     @contact.destroy
 
     respond_to do |format|
-      format.html { redirect_to contacts_url, notice: "Contact was successfully destroyed." }
+      format.html { redirect_to contacts_url, notice: "Le Contact a bien été supprimer." }
       format.json { head :no_content }
     end
   end
