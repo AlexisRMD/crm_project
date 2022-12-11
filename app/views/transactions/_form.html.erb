@@ -1,0 +1,53 @@
+<%= form_with(model: transaction) do |form| %>
+  <% if transaction.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+        <% transaction.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :contact_id, style: "display: block" %>
+    <%= form.text_field :contact_id, list: 'datalistOptionsContact' %>
+    <datalist id="datalistOptionsContact">
+      <% @contacts.each do |contact| %>
+        <option value= "<%= contact.id %>"><%= contact.name %></option>
+      <% end %>
+    </datalist>
+  </div>
+
+  <div>
+    <%= form.label :product_id, style: "display: block" %>
+    <%= form.text_field :product_id, list: 'datalistOptionsProduct' %>
+    <datalist id="datalistOptionsProduct">
+      <% @products.each do |product| %>
+        <option value= "<%= product.id %>"><%= product.name %></option>
+      <% end %>
+    </datalist>
+  </div>
+
+  <div>
+    <%= form.label :status, style: "display: block" %>
+    <% if transaction.status == "negociation" %>
+      <%= form.select :status, options_for_select(Transaction.statuses.values.to_a, "Négociation en cours") %>
+    <% elsif transaction.status == "wait_command" %>
+      <%= form.select :status, options_for_select(Transaction.statuses.values.to_a, "Commande en cours") %>
+    <% else %>
+      <%= form.select :status, options_for_select(Transaction.statuses.values.to_a, "Terminé") %>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :date_livraison, style: "display: block" %>
+    <%= form.datetime_field :date_livraison %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
