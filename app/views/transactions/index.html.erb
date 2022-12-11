@@ -3,12 +3,47 @@
 <h1>Transactions</h1>
 
 <div id="transactions">
-  <% @transactions.each do |transaction| %>
-    <%= render transaction %>
-    <p>
-      <%= link_to "Show this transaction", transaction %>
-    </p>
-  <% end %>
+  <table class="table align-middle">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Contact</th>
+        <th scope="col">Produit</th>
+        <th scope="col">Status</th>
+        <th scope="col">Date de livraison</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @transactions.each do |transaction| %>
+        <tr>
+          <th scope="row"><%= transaction.id %></th>
+          <td><%= Contact.find(transaction.contact_id).name %></td>
+          <td><%= Product.find(transaction.product_id).name %></td>
+          <td>
+            <% if transaction.status == "negociation" %>
+              <%= "Négociation en cours" %>
+            <% elsif transaction.status == "wait_command" %>
+              <%= "Commande en cours" %>
+            <% else %>
+              <%= "Terminé" %>
+            <% end %>
+          </td>
+          <td><%= transaction.date_livraison.strftime("%d/%m/%Y à %H:%M") %></td>
+          <td>
+            <div class="d-flex justify-content-center">
+              <%= link_to(edit_transaction_path(transaction), class: "btn btn-warning text-light me-2") do %>
+                <i class="bi bi-pencil-square"></i>
+              <% end %>
+              <%= button_to(transaction, method: :delete, class: "btn btn-danger") do %>
+                <i class="bi bi-trash"></i>
+              <% end %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "New transaction", new_transaction_path %>
+<%= link_to "Nouvelle transaction", new_transaction_path, class: "btn btn-primary" %>
