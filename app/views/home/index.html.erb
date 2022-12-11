@@ -1,2 +1,13 @@
-<h1>Dashboard</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="mb-4">
+    <h1>Dashboard</h1>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h2>Progression du nombre de clients</h2>
+        <%= line_chart Contact.group_by_day(:created_at).count %>
+    </div>
+    <div class="col-md-6">
+        <h2>Quantité en stock des différents produits</h2>
+        <%= pie_chart Product.select([:category_id, :remaining_quantity]).group(:name).sum(:remaining_quantity), donut: true %>
+    </div>
+</div>

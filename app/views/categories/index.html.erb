@@ -1,14 +1,35 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Categories</h1>
+<h1>Catégories</h1>
 
 <div id="categories">
-  <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
-  <% end %>
+  <table class="table align-middle">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Catégorie</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <th scope="row"><%= category.id %></th>
+          <td><%= category.name %></td>
+          <td>
+          <div class="d-flex justify-content-center">
+          <%= link_to(edit_category_path(category), class: "btn btn-warning text-light me-2") do %>
+          <i class="bi bi-pencil-square"></i>
+          <% end %>
+          <%= button_to(category, method: :delete, class: "btn btn-danger") do %>
+          <i class="bi bi-trash"></i>
+          <% end %>
+          </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
-<%= link_to "New category", new_category_path %>
+<%= link_to "Nouvelle catégorie", new_category_path, class: "btn btn-primary" %>

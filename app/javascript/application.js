@@ -4,3 +4,6 @@
 //= require bootstrap-sprockets
 import "@hotwired/turbo-rails"
 import "controllers"
+import "custom/sidebar"
+import "chartkick"
+import "Chart.bundle"
