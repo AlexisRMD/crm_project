@@ -6,7 +6,8 @@ class ContactsController < InheritedResources::Base
   end
 
   def show
-    
+    @transactions = Transaction.all
+    @transaction = nil
   end
 
   def edit

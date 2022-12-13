@@ -34,4 +34,55 @@
     <% end %>
   </p>
 
+  <% @transactions.each do |element| %>
+    <% if element.contact_id == contact.id %>
+      <% @transaction = element.contact_id %>
+    <% end %>
+  <% end %>
+
+  <% if @transaction != nil %>
+
+    <p>
+      <strong>Mes transactions:</strong>
+    </p>
+
+    <table class="table align-middle">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Contact</th>
+          <th scope="col">Produit</th>
+          <th scope="col">Status</th>
+          <th scope="col">Date de livraison</th>
+          <th scope="col">Lien</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @transactions.each do |transaction| %>
+          <% if transaction.contact_id == contact.id %>
+            <tr>
+              <th scope="row"><%= transaction.id %></th>
+              <td><%= contact.name %></td>
+              <td><%= Product.find(transaction.product_id).name %></td>
+              <td>
+                <% if transaction.status == "negociation" %>
+                  <%= "Négociation en cours" %>
+                <% elsif transaction.status == "wait_command" %>
+                  <%= "Commande en cours" %>
+                <% else %>
+                  <%= "Terminé" %>
+                <% end %>
+              </td>
+              <td><%= transaction.date_livraison.strftime("%d/%m/%Y à %H:%M") %></td>
+              <td>
+                <%= link_to(transactions_path, class: "btn btn-primary col-auto") do %>
+                  <i class="bi bi-plus-slash-minus"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>
