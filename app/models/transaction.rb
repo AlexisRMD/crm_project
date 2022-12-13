@@ -3,4 +3,6 @@ class Transaction < ApplicationRecord
   belongs_to :product
 
   enum status: { negociation: 'Négociation en cours', wait_command: 'Commande en cours', completed: 'Terminé' }
+
+  validates :date_livraison, presence: true
 end

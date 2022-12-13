@@ -14,25 +14,21 @@
   <div class="row mb-3 justify-content-center">
     <%= form.label :contact_id, class: "col-auto col-form-label" %>
     <div class="col">
-      <%= form.text_field :contact_id, list: 'datalistOptionsContact', class: "form-control" %>
-      <datalist id="datalistOptionsContact">
-        <% @contacts.each do |contact| %>
-          <option value= "<%= contact.id %>"><%= contact.name %></option>
-        <% end %>
-      </datalist>
+      <%= form.select :contact_id, options_for_select(Contact.all.map{|c|[c.name, c.id]}), {}, class: "form-select" %>
     </div>
+    <%= link_to(contacts_path, class: "btn btn-primary col-auto") do %>
+    <i class="bi bi-plus-slash-minus"></i>
+    <% end %>
   </div>
 
   <div class="row mb-3 justify-content-center">
     <%= form.label :product_id, class: "col-auto col-form-label" %>
     <div class="col">
-      <%= form.text_field :product_id, list: 'datalistOptionsProduct', class: "form-control" %>
-      <datalist id="datalistOptionsProduct">
-        <% @products.each do |product| %>
-          <option value= "<%= product.id %>"><%= product.name %></option>
-        <% end %>
-      </datalist>
+      <%= form.select :product_id, options_for_select(Product.all.map{|p|[p.name, p.id]}), {}, class: "form-select" %>
     </div>
+    <%= link_to(products_path, class: "btn btn-primary col-auto") do %>
+    <i class="bi bi-plus-slash-minus"></i>
+    <% end %>
   </div>
 
   <div class="row mb-3 justify-content-center">
