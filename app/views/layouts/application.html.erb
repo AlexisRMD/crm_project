@@ -18,7 +18,7 @@
       <div class="l-navbar" id="nav-bar">
           <nav class="nav">
               <div>
-                <a href="#" class="nav_logo">
+                <a href="/" class="nav_logo">
                   <i class='bx bx-layer nav_logo-icon'></i>
                   <span class="nav_logo-name">NoName Project</span>
                 </a>
@@ -36,8 +36,12 @@
                     <span class="nav_name">Produits</span>
                   <% end %>
                   <%= link_to(transactions_path, class:"nav_link #{'active' if request.path == transactions_path}") do %>
-                    <i class='bx bx-folder nav_icon'></i>
+                    <i class='bx bx-transfer nav_icon'></i>
                     <span class="nav_name">Transactions</span>
+                  <% end %>
+                  <%= link_to(plannings_path, class:"nav_link #{'active' if request.path == plannings_path}") do %>
+                    <i class='bx bx-calendar nav_icon'></i>
+                    <span class="nav_name">Calendrier</span>
                   <% end %>
                 </div>
               </div>

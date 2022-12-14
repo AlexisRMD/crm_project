@@ -53,11 +53,18 @@ gem 'pundit'
 # Use Sass to process CSS
 gem "sassc-rails"
 
+# Bootstrap
 gem 'bootstrap', '~> 5.2.3'
 
+# Charts
 gem "chartkick"
 gem "groupdate"
 
+# Calendar
+gem "simple_calendar", "~> 2.4"
+
+# Translation
+gem 'rails-i18n'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
