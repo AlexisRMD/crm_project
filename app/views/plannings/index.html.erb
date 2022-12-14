@@ -1,0 +1,11 @@
+<h1>Calendrier des transactions</h1>
+
+<%= month_calendar(events: @plannings) do |date, plannings| %>
+  <%= date.day %>
+
+  <% plannings.each do |planning| %>
+    <div>
+      Transaction avec <%= planning.contact.name %> à <%= '%02d' % planning.date_livraison.hour %>:<%= '%02d' % planning.date_livraison.min %>
+    </div>
+  <% end %>
+<% end %>
