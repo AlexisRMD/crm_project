@@ -4,7 +4,7 @@ RSpec.describe "contacts/edit", type: :view do
   let(:contact) {
     Contact.create!(
       name: "MyString",
-      tel: "MyString",
+      tel: "0611223344",
       email: "MyString",
       type_name: "Client",
       status: "Rien"

@@ -4,7 +4,7 @@ RSpec.describe "contacts/new", type: :view do
   before(:each) do
     assign(:contact, Contact.new(
       name: "MyString",
-      tel: "MyString",
+      tel: "0611223344",
       email: "MyString",
       type_name: "Client",
       status: "Rien"

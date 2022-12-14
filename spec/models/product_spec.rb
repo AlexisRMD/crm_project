@@ -20,5 +20,4 @@ RSpec.describe Product, type: :model do
   it "is not valid with a negative price" do
     prod = Product.create(name: "Valid Product", category: category, price: -1, remaining_quantity: 0)
     expect(prod).to_not be_valid()
-  end
 end
