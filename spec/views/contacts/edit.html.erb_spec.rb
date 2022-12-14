@@ -6,8 +6,8 @@ RSpec.describe "contacts/edit", type: :view do
       name: "MyString",
       tel: "MyString",
       email: "MyString",
-      type: 1,
-      etat: 1
+      type_name: "Client",
+      status: "Rien"
     )
   }
 
@@ -26,9 +26,9 @@ RSpec.describe "contacts/edit", type: :view do
 
       assert_select "input[name=?]", "contact[email]"
 
-      assert_select "input[name=?]", "contact[type]"
+      # assert_select "input[name=?]", "contact[type_name]"
 
-      assert_select "input[name=?]", "contact[etat]"
+      # assert_select "input[name=?]", "contact[status]"
     end
   end
 end
