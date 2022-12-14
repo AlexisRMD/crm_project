@@ -6,8 +6,8 @@ RSpec.describe "contacts/show", type: :view do
       name: "Name",
       tel: "Tel",
       email: "Email",
-      type: 2,
-      etat: 3
+      type_name: "Client",
+      status: "Rien"
     ))
   end
 
@@ -16,7 +16,7 @@ RSpec.describe "contacts/show", type: :view do
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/Tel/)
     expect(rendered).to match(/Email/)
-    expect(rendered).to match(/2/)
-    expect(rendered).to match(/3/)
+    expect(rendered).to match(/Client/)
+    expect(rendered).to match(/Rien/)
   end
 end

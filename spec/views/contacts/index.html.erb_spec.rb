@@ -7,26 +7,26 @@ RSpec.describe "contacts/index", type: :view do
         name: "Name",
         tel: "Tel",
         email: "Email",
-        type: 2,
-        etat: 3
+        type_name: "Client",
+        status: "Rien"
       ),
       Contact.create!(
         name: "Name",
         tel: "Tel",
         email: "Email",
-        type: 2,
-        etat: 3
+        type_name: "Client",
+        status: "Rien"
       )
     ])
   end
 
   it "renders a list of contacts" do
     render
-    cell_selector = Rails::VERSION::STRING >= '7' ? 'div>p' : 'tr>td'
+    cell_selector = Rails::VERSION::STRING >= '7' ? 'tr>td' : 'div>p'
     assert_select cell_selector, text: Regexp.new("Name".to_s), count: 2
     assert_select cell_selector, text: Regexp.new("Tel".to_s), count: 2
     assert_select cell_selector, text: Regexp.new("Email".to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(2.to_s), count: 2
-    assert_select cell_selector, text: Regexp.new(3.to_s), count: 2
+    assert_select cell_selector, text: Regexp.new("Client".to_s), count: 2
+    assert_select cell_selector, text: Regexp.new("Rien".to_s), count: 2
   end
 end
